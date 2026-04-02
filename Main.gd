@@ -1,6 +1,6 @@
 extends Control
 
-@onready var grid_container: GridContainer = $VBoxContainer/CenterContainer/GridBg/MarginContainer/GridContainer
+@onready var grid_container: GridContainer = $VBoxContainer/AspectRatioContainer/GridBg/MarginContainer/GridContainer
 @onready var status_label: Label = $VBoxContainer/Status
 @onready var new_game_btn: Button = $VBoxContainer/HBoxContainer/NewGameBtn
 @onready var check_btn: Button = $VBoxContainer/HBoxContainer/CheckBtn
