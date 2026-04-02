@@ -1,11 +1,11 @@
 class_name SudokuLogic
 
-const SIZE = 9
-const EMPTY = 0
+const SIZE: int = 9
+const EMPTY: int = 0
 
 # 生成一个完整的合法数独终盘
 static func generate_board() -> Array:
-	var board = []
+	var board: Array = []
 	for i in range(SIZE):
 		board.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 	
@@ -14,13 +14,13 @@ static func generate_board() -> Array:
 
 # 挖空以生成谜题 (难度取决于 holes 的数量，通常 30-50 比较合适)
 static func generate_puzzle(holes: int = 40) -> Array:
-	var board = generate_board()
-	var puzzle = board.duplicate(true)
+	var board: Array = generate_board()
+	var puzzle: Array = board.duplicate(true)
 	
-	var count = holes
+	var count: int = holes
 	while count > 0:
-		var row = randi() % SIZE
-		var col = randi() % SIZE
+		var row: int = randi() % SIZE
+		var col: int = randi() % SIZE
 		if puzzle[row][col] != EMPTY:
 			puzzle[row][col] = EMPTY
 			count -= 1
@@ -33,11 +33,11 @@ static func _fill_board(board: Array) -> bool:
 		for col in range(SIZE):
 			if board[row][col] == EMPTY:
 				# 尝试填入 1-9
-				var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+				var numbers: Array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 				numbers.shuffle() # 随机打乱以生成不同的棋盘
 				
 				for num in numbers:
-					if _is_valid(board, row, col, num):
+					if _is_valid(board, row, col, num as int):
 						board[row][col] = num
 						if _fill_board(board):
 							return true
@@ -53,8 +53,8 @@ static func _is_valid(board: Array, row: int, col: int, num: int) -> bool:
 			return false
 			
 	# 检查 3x3 宫格
-	var start_row = row - (row % 3)
-	var start_col = col - (col % 3)
+	var start_row: int = row - (row % 3)
+	var start_col: int = col - (col % 3)
 	for i in range(3):
 		for j in range(3):
 			if board[start_row + i][start_col + j] == num:
@@ -68,9 +68,9 @@ static func is_solved(board: Array) -> bool:
 		for col in range(SIZE):
 			if board[row][col] == EMPTY:
 				return false
-			var temp = board[row][col]
+			var temp: int = board[row][col]
 			board[row][col] = EMPTY
-			var valid = _is_valid(board, row, col, temp)
+			var valid: bool = _is_valid(board, row, col, temp)
 			board[row][col] = temp
 			if not valid:
 				return false

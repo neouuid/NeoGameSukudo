@@ -40,15 +40,15 @@ theme_override_font_sizes/font_size = 44
 text = "数 独 游 戏"
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="GridBg" type="ColorRect" parent="VBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(470, 470)
+[node name="GridBg" type="ColorRect" parent="VBoxContainer/AspectRatioContainer"]
 layout_mode = 2
 color = Color(0.2, 0.25, 0.35, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/GridBg"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/AspectRatioContainer/GridBg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +60,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/CenterContainer/GridBg/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/AspectRatioContainer/GridBg/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2

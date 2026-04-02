@@ -6,7 +6,7 @@
 *.translation
 
 # Exported games
-export_presets.cfg
+# export_presets.cfg
 /build/
 /exports/
 /bin/
